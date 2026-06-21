@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us · Creative Studio</title>
+  <!-- style sheets link (existing style.css) -->
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* ----- global reset & base (complements style.css) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #f8faff;
+      color: #1e1e2f;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ----- header navigation (matches active state) ----- */
+    .navbar {
+      background: linear-gradient(145deg, #ffffff, #f0f4fe);
+      box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+      padding: 0.8rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(0, 40, 80, 0.05);
+    }
+
+    .logo a {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #0b2b4a;
+      text-decoration: none;
+      background: linear-gradient(135deg, #1e3a6f, #2b5a8c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e5c;
+      font-size: 1.05rem;
+      padding: 0.4rem 0.2rem;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #3a7bb5;
+      color: #0a2647;
+    }
+
+    /* active link – Contact Us */
+    .nav-links a.active {
+      border-bottom-color: #1f5e9e;
+      color: #0a2647;
+      font-weight: 600;
+      background: rgba(30, 80, 140, 0.04);
+      padding: 0.4rem 0.8rem;
+      border-radius: 30px 30px 8px 8px;
+    }
+
+    /* ----- main contact section – creative & playful ----- */
+    .contact-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .contact-card {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      background: #ffffff;
+      border-radius: 48px 48px 48px 48px;
+      box-shadow: 0 25px 50px -10px rgba(0, 20, 40, 0.15),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.7);
+      padding: 2.8rem 3.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: 0.3s ease;
+    }
+
+    .contact-card:hover {
+      box-shadow: 0 35px 65px -12px rgba(18, 52, 106, 0.2);
+    }
+
+    .contact-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-header h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #1b3b5c, #2b5f8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.3px;
+    }
+
+    .contact-header span {
+      font-size: 2.6rem;
+      -webkit-text-fill-color: initial;
+      background: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem 1.8rem;
+      margin: 2rem 0 1.8rem;
+    }
+
+    .contact-item {
+      background: #f6faff;
+      border-radius: 28px;
+      padding: 1.4rem 1.4rem 1.2rem;
+      border: 1px solid rgba(60, 100, 160, 0.08);
+      transition: 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 20, 40, 0.02);
+    }
+
+    .contact-item:hover {
+      background: #f0f7ff;
+      border-color: #b6d2f0;
+      transform: translateY(-3px);
+    }
+
+    .contact-item .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #4f6f92;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item .value {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #0b2744;
+      word-break: break-word;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item .value i {
+      font-style: normal;
+      background: #dbe8fa;
+      padding: 0 10px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1e4b77;
+    }
+
+    .contact-item .value a {
+      color: #1d4e7c;
+      text-decoration: none;
+      border-bottom: 1px dashed #8fb4da;
+    }
+
+    .contact-item .value a:hover {
+      color: #002b55;
+      border-bottom-style: solid;
+    }
+
+    .contact-note {
+      margin-top: 2.2rem;
+      padding-top: 1.8rem;
+      border-top: 2px dashed #c7dbf0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-note .tagline {
+      font-size: 0.95rem;
+      background: #e3effa;
+      padding: 0.5rem 1.3rem;
+      border-radius: 60px;
+      color: #123a60;
+      font-weight: 450;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-note .tagline span {
+      font-size: 1.2rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      background: #eef4fc;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1a4168;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: 0.15s;
+    }
+
+    .social-icons a:hover {
+      background: #d2e3fa;
+      border-color: #8eb6dc;
+      color: #002a4e;
+    }
+
+    /* small screens */
+    @media (max-width: 640px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+        padding: 0.8rem 1.2rem;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .contact-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 32px;
+      }
+      .contact-header h2 {
+        font-size: 1.9rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .contact-note {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* footer style (optional) */
+    .footer-note {
+      text-align: center;
+      padding: 1rem 0.5rem;
+      font-size: 0.85rem;
+      color: #5b7290;
+      border-top: 1px solid rgba(0, 0, 0, 0.02);
+      margin-top: 0.5rem;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <!-- header navigation bar with active "Contact Us" -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">✦ studio</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main contact information content (creative) -->
+  <main class="contact-wrapper">
+    <div class="contact-card">
+      <div class="contact-header">
+        <span>📬</span>
+        <h2>Let’s connect</h2>
+      </div>
+
+      <!-- contact grid : creative info -->
+      <div class="contact-grid">
+        <!-- address -->
+        <div class="contact-item">
+          <span class="label">📍 studio</span>
+          <div class="value">
+            201 Creative Lane,<br> 
+            Suite 4B, Brooklyn, NY 11201
+          </div>
+        </div>
+        <!-- phone -->
+        <div class="contact-item">
+          <span class="label">📞 call</span>
+          <div class="value">
+            <a href="tel:+12125551234">+1 (212) 555-1234</a>
+            <i>ext. 42</i>
+          </div>
+        </div>
+        <!-- email -->
+        <div class="contact-item">
+          <span class="label">✉️ email</span>
+          <div class="value">
+            <a href="mailto:hello@creativestudio.co">hello@creativestudio.co</a>
+          </div>
+        </div>
+        <!-- social / creative extra -->
+        <div class="contact-item">
+          <span class="label">🕊️ carrier</span>
+          <div class="value">
+            <span style="background:#e2edfb; padding:0 12px; border-radius:40px;">pigeon</span>
+            <span style="font-weight:300; font-size:0.9rem;">preferred</span>
+          </div>
+        </div>
+        <!-- hours -->
+        <div class="contact-item">
+          <span class="label">⏳ hours</span>
+          <div class="value">
+            Mon – Fri · 9:00 – 18:00 <br>
+            <span style="font-size:0.8rem; font-weight:400; color:#3e6080;">& weekends by telepathy</span>
+          </div>
+        </div>
+        <!-- emergency / after-hours -->
+        <div class="contact-item">
+          <span class="label">🌙 after hours</span>
+          <div class="value">
+            <a href="tel:+19175551234">+1 (917) 555-1234</a>
+            <i style="font-size:0.7rem;">urgent</i>
+          </div>
+        </div>
+      </div>
+
+      <!-- extra creative note & social links -->
+      <div class="contact-note">
+        <div class="tagline">
+          <span>✨</span>  we reply within 4 light-years
+        </div>
+        <div class="social-icons">
+          <a href="#">🐦 X</a>
+          <a href="#">📸 IG</a>
+          <a href="#">💼 LN</a>
+        </div>
+      </div>
+      <!-- small decorative message -->
+      <div style="margin-top: 1.2rem; font-size:0.8rem; color:#507190; letter-spacing:0.2px; border-left:3px solid #b6d0ea; padding-left: 1rem;">
+        ⚡ carrier pigeons & smoke signals also accepted (by appointment)
+      </div>
+    </div>
+  </main>
+
+  <!-- tiny footer (just for completeness) -->
+  <div class="footer-note">
+    <span>© 2026 · creative studio ·  all rights reversed</span>
+  </div>
+</body>
+</html>
