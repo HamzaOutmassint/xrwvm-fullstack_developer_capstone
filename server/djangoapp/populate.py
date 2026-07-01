@@ -41,4 +41,3 @@ def initiate():
             car_make=car_make_instances[make_index],
             dealer_id=dealer_id,
         )
-        
